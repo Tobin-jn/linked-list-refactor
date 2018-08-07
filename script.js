@@ -1,3 +1,18 @@
+var userTitle = document.querySelector('.link-title');
+var userUrl = document.querySelector('.link-url');
+var enterBtn = document.querySelector('.enter-btn');
+var cardContainer = document.querySelector('.new-cards-wrapper');
+
+userUrl.addEventListener('keyup', enableBtn);
+enterBtn.addEventListener('click', makeCard);
+
+function makeCard(e) {
+  e.preventDefault();
+}
+
+function enableBtn() {
+  
+}
 
 
 
