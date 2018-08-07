@@ -10,41 +10,47 @@ body {
   font-weight: 'regular';
 }
 
-.wrapper {
-  background-color: #455A64;
-  display: inline-block;
-  height: 100%;
+/*=====Input Field=======*/
+
+.page-wrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.input-wrapper {
+    background-color: #455A64;
+    grid-column: 1;
+/*  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;*/
   position: fixed;
-  width: 50%;
 }
 
 h1 {
   color: #FFFFFF;
   font-size: 4.1rem;
   font-weight: 800;
-  margin-top: 25%;
   text-align: center;
+      margin: 50px 0px;
 }
 
-img {
-  height: 65px;
+form {
+      padding: 25px;
+      margin-bottom: 50%;
 }
 
-.error {
-  height: 50px;
+.link-title,
+.link-url {
+    border: 1px solid #c2c0c4;
+    font-size: 1.6em;
+    height: 3.1rem;
+    width: 100%;
+    padding: 10px;
 }
 
-.web-title,
-.web-url {
-  border: 1px solid #c2c0c4;
-  display: block;
-  font-size: 1.6em;
-  height: 3.1rem;
-  margin: 0px auto;
-  width: 90%;
-}
-
-.web-url {
+.link-url {
   margin-top: 10%;
 }
 
@@ -66,13 +72,15 @@ img {
   width: 90%;
 }
 
-.link-cards-wrapper {
-  float: right;
+
+/*=====New Links======*/
+
+.new-cards-wrapper {
   height: 100%;
-  width: 50%;
+  grid-column: 2;
 }
 
-.link-one {
+.new-link {
   background-color: #FFFFFF;
   border: 2px solid #607D8B;
   height: 10.275rem;
@@ -80,7 +88,7 @@ img {
   padding: 10px;
 }
 
-#Title-card-one {
+#new-title {
   border-bottom: 2px solid #CFD8DC;
   color: #455A64;
   font-size: 1.7em;
@@ -89,7 +97,7 @@ img {
   padding-bottom: 5px;
 }
 
-#Url-card-one {
+#new-url {
   border-bottom: 2px solid #CFD8DC;
   color: #607D8B;
   font-size: 1.3em;
@@ -101,12 +109,12 @@ img {
   text-decoration: underline;
 }
 
-#Url-card-one:hover, .read-btn-one:hover, .delete-btn-one:hover {
+#new-url:hover, .read-btn:hover, .delete-btn:hover {
   color: #455A64;
   text-decoration-color: #FFC107;
 }
 
-.read-btn-one {
+.read-btn {
   border: 0;
   color: #607D8B;
   font-size: 1.1em;
@@ -115,12 +123,12 @@ img {
   text-decoration: underline;
 }
 
-.red .read-btn-one {
+.read .read-btn {
   color: #F05A28;
   font-weight: 800;
 }
 
-.delete-btn-one {
+.delete-btn {
   border: 0;
   color: #607D8B;
   float: right;
@@ -130,6 +138,9 @@ img {
   text-decoration: underline;
 }
 
+
+
+/*
 
 @media screen and (max-width: 575px) {
  
@@ -159,6 +170,7 @@ img {
     margin-top: 5%;
   }
 
+
   .enter-btn {
     margin-top: 5%;
   }
@@ -167,3 +179,4 @@ img {
     width: 100%;
   }
 }
+*/
