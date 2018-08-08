@@ -2,6 +2,12 @@ var userTitle = document.querySelector('.link-title');
 var userUrl = document.querySelector('.link-url');
 var enterBtn = document.querySelector('.enter-btn');
 var cardContainer = document.querySelector('.new-cards-wrapper');
+var counterLinks = document.querySelector('.count-number');
+var counterRead = document.querySelector('.count-number-read');
+var counterUnread = document.querySelector('.count-number-unread');
+var countLinks = 0;
+var countRead = 0;
+var countUnread = 0;
 
 userUrl.addEventListener('keyup', enableBtn);
 enterBtn.addEventListener('click', makeCard);
@@ -21,8 +27,21 @@ function makeCard(e) {
   var newCard = document.createElement('div');
   newCard.innerHTML = newLink
   cardContainer.appendChild(newCard);
+  countCard();
   clearInput();
   enableBtn();
+}
+
+function countCard() {
+  countLinks++
+  counterLinks.innerText = countLinks;
+  countUnread++
+  counterUnread.innerText = countUnread;
+}
+
+function countDownCard() {
+  countLinks--
+  counter.innerText = count;
 }
 
 function enableBtn() {
@@ -39,23 +58,21 @@ function clearInput() {
 }
 
 function markRead(e) {
-  var cardRead = document.querySelector('.read-btn');
-  var cardRead2 = document.querySelector('.read');
-  if (event.target.className === 'read-btn'){
-    cardRead.classList.remove('read-btn');
-    cardRead.classList.add('read');
-  } else if (event.target.className === 'read'){
-    cardRead2.classList.remove('read');
-    cardRead2.classList.add('read-btn');
+  if (event.target.className === 'read-btn' && event.target.parentElement.className === 'new-link'){
+    event.target.classList.remove('read-btn');
+    event.target.classList.add('read');
+  } else if (event.target.className === 'read' && event.target.parentElement.className === 'new-link'){
+    event.target.classList.remove('read');
+    event.target.classList.add('read-btn');
   }
 }
 
 function deleteCard() {
-  var removeCard = document.querySelector('.delete-btn'); 
-if (event.target.className === 'delete-btn'){
-  removeCard.parentElement.remove();
+  if (event.target.className === 'delete-btn'){
+    event.target.parentElement.remove();
+    countDownCard();
+  }
 
-}
 }
 
 

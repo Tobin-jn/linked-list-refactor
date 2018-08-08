@@ -146,6 +146,13 @@ form {
   text-decoration: underline;
 }
 
+.counter {
+  border: solid thin black;
+}
+.counter h4 {
+  font-size: 1.1em;
+}
+
 
 
 /*
