@@ -5,13 +5,57 @@ var cardContainer = document.querySelector('.new-cards-wrapper');
 
 userUrl.addEventListener('keyup', enableBtn);
 enterBtn.addEventListener('click', makeCard);
+cardContainer.addEventListener('click', markRead);
+cardContainer.addEventListener('click', deleteCard);
 
 function makeCard(e) {
   e.preventDefault();
+  var title = userTitle.value;
+  var url = userUrl.value;
+  var newLink = `<section class="new-link">
+       <h2 id="new-title">${ title }</h2>
+       <h3 id="new-url" >${ url }</h3>
+       <button class="read-btn">Read</button>
+       <button class="delete-btn">Delete</button>
+     </section>`
+  var newCard = document.createElement('div');
+  newCard.innerHTML = newLink
+  cardContainer.appendChild(newCard);
+  clearInput();
+  enableBtn();
 }
 
 function enableBtn() {
-  
+  if (userTitle.value !== '' && userUrl.value !== ''){
+    enterBtn.removeAttribute('disabled');
+  } else {
+    enterBtn.setAttribute('disabled', '');
+  }
+}
+
+function clearInput() {
+  userTitle.value = '';
+  userUrl.value = '';
+}
+
+function markRead(e) {
+  var cardRead = document.querySelector('.read-btn');
+  var cardRead2 = document.querySelector('.read');
+  if (event.target.className === 'read-btn'){
+    cardRead.classList.remove('read-btn');
+    cardRead.classList.add('read');
+  } else if (event.target.className === 'read'){
+    cardRead2.classList.remove('read');
+    cardRead2.classList.add('read-btn');
+  }
+}
+
+function deleteCard() {
+  var removeCard = document.querySelector('.delete-btn'); 
+if (event.target.className === 'delete-btn'){
+  removeCard.parentElement.remove();
+
+}
 }
 
 
