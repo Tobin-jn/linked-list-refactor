@@ -69,7 +69,7 @@ form {
   font-weight: 800;
   height: 3.125rem;
   margin: 10% auto;
-  width: 90%;
+  width: 100%;
 }
 
 
@@ -114,6 +114,17 @@ form {
   text-decoration-color: #FFC107;
 }
 
+.read {
+  color: #7C0A02;
+  font-weight: 800;
+  font-size: 1.1em;
+  border: 0;
+  margin: 5px;
+  text-decoration-color: #F2F4F4;
+  text-decoration: underline;
+}
+
+
 .read-btn {
   border: 0;
   color: #607D8B;
@@ -123,10 +134,7 @@ form {
   text-decoration: underline;
 }
 
-.read .read-btn {
-  color: #F05A28;
-  font-weight: 800;
-}
+
 
 .delete-btn {
   border: 0;
@@ -136,6 +144,13 @@ form {
   margin: 5px; 
   text-decoration-color: #F2F4F4;
   text-decoration: underline;
+}
+
+.counter {
+  border: solid thin black;
+}
+.counter h4 {
+  font-size: 1.1em;
 }
 
 

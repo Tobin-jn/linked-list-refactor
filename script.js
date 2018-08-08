@@ -1,3 +1,128 @@
+var userTitle = document.querySelector('.link-title');
+var userUrl = document.querySelector('.link-url');
+var enterBtn = document.querySelector('.enter-btn');
+var cardContainer = document.querySelector('.new-cards-wrapper');
+var counterLinks = document.querySelector('.count-number');
+var counterRead = document.querySelector('.count-number-read');
+var counterUnread = document.querySelector('.count-number-unread');
+var clearRead = document.querySelector('.clear-all-read');
+var countLinks = 0;
+var countRead = 0;
+var countUnread = 0;
+
+userUrl.addEventListener('keyup', enableBtn);
+enterBtn.addEventListener('click', makeCard);
+cardContainer.addEventListener('click', markRead);
+cardContainer.addEventListener('click', deleteCard);
+clearRead.addEventListener('click', clearAllRead)
+
+function makeCard(e) {
+  e.preventDefault();
+  var title = userTitle.value;
+  var url = userUrl.value;
+  var newLink = `<section class="new-link">
+       <h2 id="new-title">${ title }</h2>
+       <h3 id="new-url" >${ url }</h3>
+       <button class="read-btn">Read</button>
+       <button class="delete-btn">Delete</button>
+     </section>`
+  var newCard = document.createElement('div');
+  newCard.innerHTML = newLink
+  cardContainer.appendChild(newCard);
+  countCard();
+  clearInput();
+  enableBtn();
+}
+
+function countCard() {
+  countLinks++
+  counterLinks.innerText = countLinks;
+  countUnread++
+  counterUnread.innerText = countUnread;
+}
+
+function countDownCard() {
+  countLinks--
+  counterLinks.innerText = countLinks;
+}
+
+function addRead() {
+  countRead++
+  counterRead.innerText = countRead;
+}
+
+function subtUnread() {
+  countUnread--
+  counterUnread.innerText = countUnread;
+}
+
+function subtRead() {
+  countRead--
+  counterRead.innerText = countRead;
+
+}
+
+function addUnread() {
+  countUnread++
+  counterUnread.innerText = countUnread;
+}
+
+
+function enableBtn() {
+  if (userTitle.value !== '' && userUrl.value !== ''){
+    enterBtn.removeAttribute('disabled');
+  } else {
+    enterBtn.setAttribute('disabled', '');
+  }
+}
+
+function clearInput() {
+  userTitle.value = '';
+  userUrl.value = '';
+}
+
+function markRead(event) {
+  if (event.target.className === 'read-btn' && event.target.parentElement.className === 'new-link'){
+    event.target.classList.remove('read-btn');
+    event.target.classList.add('read');
+    addRead();
+    subtUnread();
+  } else if (event.target.className === 'read' && event.target.parentElement.className === 'new-link'){
+    event.target.classList.remove('read');
+    event.target.classList.add('read-btn');
+    subtRead();
+    addUnread();
+  }
+}
+
+function deleteCard() {
+  if (event.target.className === 'delete-btn'){
+    adjustRead()
+    event.target.parentElement.remove();
+    countDownCard();
+  } 
+}
+
+function adjustRead() {
+  if (event.target.previousElementSibling.className === 'read'){
+    subtRead()
+  } else {subtUnread()}
+}
+
+function clearAllRead(e) {
+  e.preventDefault();
+  var allRead = document.querySelectorAll('.read')
+  allRead.forEach(function(i) {
+    i.parentElement.remove();
+    countDownCard();
+    subtRead();
+  })
+}
+
+
+ 
+
+
 
 
 
